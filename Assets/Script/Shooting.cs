@@ -22,6 +22,7 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
+
             Shoot();
         }
     }
@@ -44,6 +45,8 @@ public class Shooting : MonoBehaviour
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
 
         ApplyRecoil();
+
+
 
         //Start cooldown
         StartCoroutine(ShootCooldown());

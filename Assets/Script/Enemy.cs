@@ -3,9 +3,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private EnemySpawner spawner;
+
+    public void Initialize(EnemySpawner spawnerRef)
     {
+        spawner = spawnerRef;
+
 
     }
+
+    void OnDestroy()
+    {
+        if (spawner != null)
+        {
+            Debug.Log("Enemy destroyed");
+            spawner.OnEnemyKilled();
+        }
+    }
+
 }

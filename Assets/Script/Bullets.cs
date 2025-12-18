@@ -23,6 +23,9 @@ public class Bullet : MonoBehaviour
 
     private bool exploded = false;
 
+    public TimeManager timeManager;
+
+
     private void Start()
     {
         Destroy(gameObject, lifetime); // auto cleanup
@@ -33,6 +36,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag(enemyTag))
         {
             HandleEnemyHit(other);
+            timeManager.DoSlowmotion();
 
             if (destroyOnHit)
                 Destroy(gameObject);
@@ -56,6 +60,7 @@ public class Bullet : MonoBehaviour
 
             if (hasExplosion)
                 Explode();
+
 
             Destroy(gameObject);
         }
@@ -88,6 +93,7 @@ public class Bullet : MonoBehaviour
                 float force = explosionForce * (1 - (distance / explosionRadius));
 
                 rb.AddForce(direction * force, ForceMode2D.Impulse);
+
             }
 
             // kill enemies in explosion radius

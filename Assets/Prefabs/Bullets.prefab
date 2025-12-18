@@ -159,6 +159,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
+  timeManager: {fileID: 1106186085747642727, guid: 43cea7b465d8a3f48b1379d05fdbfeba, type: 3}
 --- !u!50 &6584844729940415565
 Rigidbody2D:
   serializedVersion: 5
