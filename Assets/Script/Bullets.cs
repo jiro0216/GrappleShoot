@@ -6,7 +6,14 @@ public class Bullet : MonoBehaviour
 {
     [Header("General Settings")]
     public float lifetime = 5f;              // auto-destroy bullet
+
+    [Header("Effects")]
     public GameObject hitEffect;             // optional visual effect
+                                             //public ShockWaveManager callShockWave;
+
+    //ShockWaveManager callShockWave;
+
+
     public bool destroyOnHit = true;         // bullet disappears on hit
 
     [Header("Enemy Settings")]
@@ -26,9 +33,20 @@ public class Bullet : MonoBehaviour
     public TimeManager timeManager;
 
 
+
     private void Start()
     {
         Destroy(gameObject, lifetime); // auto cleanup
+
+        // if (callShockWave == null)
+        // {
+        //     callShockWave = FindObjectOfType<ShockWaveManager>();
+        //     if (callShockWave == null)
+        //         Debug.LogWarning("No ShockWaveManager found in scene!");
+        // }
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +54,8 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag(enemyTag))
         {
             HandleEnemyHit(other);
+
+
             timeManager.DoSlowmotion();
 
             if (destroyOnHit)
@@ -58,6 +78,7 @@ public class Bullet : MonoBehaviour
                 Destroy(effect, 0.5f);
             }
 
+
             if (hasExplosion)
                 Explode();
 
@@ -69,19 +90,26 @@ public class Bullet : MonoBehaviour
     void HandleEnemyHit(Collider2D enemy)
     {
         // spawn hit effect
+        // Vector2 hitPos = enemy.transform.position;
+
         if (hitEffect != null)
             Instantiate(hitEffect, enemy.transform.position, Quaternion.identity);
+
+        // if (callShockWave != null)
+        //     callShockWave.CallShockWave(enemy.transform.position);
 
         // instant kill
         if (instantKill)
         {
             Destroy(enemy.gameObject);
+
         }
     }
 
     void Explode()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
 
         foreach (Collider2D nearby in colliders)
         {
