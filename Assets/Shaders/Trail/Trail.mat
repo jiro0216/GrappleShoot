@@ -74,7 +74,7 @@ Material:
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _ColorMask: 15
-    - _DissolveScale: 35.45
+    - _DissolveScale: 35
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0

@@ -131,13 +131,33 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 19419346fa8cbd34aa58ede583536537, type: 2}
+    - target: {fileID: 1196347889594464838, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 564c8b4d209b0d9408931e10e5484588, type: 3}
+    - target: {fileID: 1196347889594464838, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_TargetMaterialProperty
+      value: _BaseTexture
+      objectReference: {fileID: 0}
     - target: {fileID: 6809141499481254725, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
       propertyPath: m_Name
       value: Recorder
       objectReference: {fileID: 0}
     - target: {fileID: 6809141499481254725, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440092973500712567, guid: ed90d6709a2b06549b029e5b11785ca5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -220,8 +244,8 @@ Camera:
   m_GameObject: {fileID: 1392277060}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -337,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1442157334
 SpriteRenderer:
   m_ObjectHideFlags: 0
