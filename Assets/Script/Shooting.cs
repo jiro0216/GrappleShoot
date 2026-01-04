@@ -17,17 +17,17 @@ public class Shooting : MonoBehaviour
 
     private void Awake()
     {
-        shockWave = FindObjectOfType<ShockWaveManager>();
-        if (shockWave == null)
-            Debug.LogWarning("No ShockWaveManager found in scene!");
+        // shockWave = FindObjectOfType<ShockWaveManager>();
+        // if (shockWave == null)
+        //     Debug.LogWarning("No ShockWaveManager found in scene!");
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
-            if (shockWave != null)
-                shockWave.CallShockWave(firePoint.position);
+            // if (shockWave != null)
+            //     shockWave.CallShockWave();
 
             Shoot();
         }

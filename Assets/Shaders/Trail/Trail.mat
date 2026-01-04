@@ -89,7 +89,7 @@ Material:
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color01: {r: 1, g: 0, b: 0, a: 0}
+    - _Color01: {r: 0, g: 0.70425534, b: 1, a: 0}
     - _Color02: {r: 0, g: 0.2291794, b: 1, a: 0}
     - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _MainTextureSpeed: {r: -2, g: 0, b: 0, a: 0}

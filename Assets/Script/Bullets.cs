@@ -8,8 +8,11 @@ public class Bullet : MonoBehaviour
     public float lifetime = 5f;              // auto-destroy bullet
 
     [Header("Effects")]
-    public GameObject hitEffect;             // optional visual effect
-                                             //public ShockWaveManager callShockWave;
+    public GameObject hitEffect;
+    public GameObject missEffect;          // optional visual effect
+                                           //public ShockWaveManager callShockWave;
+
+    [SerializeField] private ShockWaveManager shockWaveManager;
 
     //ShockWaveManager callShockWave;
 
@@ -44,17 +47,23 @@ public class Bullet : MonoBehaviour
         //     if (callShockWave == null)
         //         Debug.LogWarning("No ShockWaveManager found in scene!");
         // }
+    }
 
-
+    private void Awake()
+    {
+        shockWaveManager = FindObjectOfType<ShockWaveManager>();
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.CompareTag(enemyTag))
         {
             HandleEnemyHit(other);
 
+
+            shockWaveManager.CallShockWave(transform.position);
 
             timeManager.DoSlowmotion();
 
@@ -75,13 +84,25 @@ public class Bullet : MonoBehaviour
             if (hitEffect != null)
             {
                 GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                Destroy(effect, 0.5f);
+
+                Destroy(effect, 1f);
             }
+
+            // call shockwave at collision point
+            if (shockWaveManager != null)
+            {
+                Debug.Log("Calling ShockWave");
+                shockWaveManager.CallShockWave(transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("No ShockWaveManager assigned to bullet!");
+            }
+
 
 
             if (hasExplosion)
                 Explode();
-
 
             Destroy(gameObject);
         }
@@ -92,13 +113,13 @@ public class Bullet : MonoBehaviour
         // spawn hit effect
         // Vector2 hitPos = enemy.transform.position;
 
-        if (hitEffect != null)
+        if (missEffect != null)
+        {
+            GameObject effect = Instantiate(missEffect, enemy.transform.position, Quaternion.identity);
             Instantiate(hitEffect, enemy.transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+        }
 
-        // if (callShockWave != null)
-        //     callShockWave.CallShockWave(enemy.transform.position);
-
-        // instant kill
         if (instantKill)
         {
             Destroy(enemy.gameObject);

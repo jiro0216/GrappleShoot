@@ -10,7 +10,7 @@ public class ShockWaveManager : MonoBehaviour
 
     private Material material;
 
-    private static int waveDistanceFromCenterID = Shader.PropertyToID("_WaveDistanceFromCenter");
+    private static int waveDistanceFromCenter = Shader.PropertyToID("_WaveDistanceFromCenter");
 
     private void Awake()
     {
@@ -27,18 +27,21 @@ public class ShockWaveManager : MonoBehaviour
         }
     }
 
-    public void CallShockWave(Vector2 worldPos)
+    public void CallShockWave(Vector3 position)
     {
 
-        if (shockWaveCoroutine != null)
-            StopCoroutine(shockWaveCoroutine);
+        // if (shockWaveCoroutine != null)
+        //     StopCoroutine(shockWaveCoroutine);
+
+        // Move shockwave object to the caller's transform
+        transform.position = position;
 
         shockWaveCoroutine = StartCoroutine(ShockwaveAction(-0.1f, 1f));
     }
 
     private IEnumerator ShockwaveAction(float startPos, float endPos)
     {
-        material.SetFloat(waveDistanceFromCenterID, startPos);
+        material.SetFloat(waveDistanceFromCenter, startPos);
 
         float elapsedTime = 0f;
 
@@ -50,7 +53,7 @@ public class ShockWaveManager : MonoBehaviour
 
             lerpedAmount = Mathf.Lerp(startPos, endPos, elapsedTime / shockWaveTime);
 
-            material.SetFloat(waveDistanceFromCenterID, lerpedAmount);
+            material.SetFloat(waveDistanceFromCenter, lerpedAmount);
 
             yield return null;
         }
